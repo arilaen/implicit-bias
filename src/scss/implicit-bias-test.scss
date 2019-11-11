@@ -1,19 +1,17 @@
-// TODO: Make materialize SCSS available to these selectors (so extend would work etc.)
+@import "../../node_modules/materialize-css/sass/materialize.scss";
 
 .target {
-  color: #1117df;
-  // @extend .blue, .accent-4;
+  @extend .blue-text, .accent-4;
   font-weight: 600;
 }
 
 .category {
-  color: #3faa31;
-  // @extend .green, .accent-4;
+  @extend .green-text, .accent-4;
   font-weight: 600;
 }
 
 .bold-red {
-  color: #e81f11;
+  @extend .red-text, .accent-4;
   font-weight: 700;
 }
 
@@ -34,6 +32,7 @@
   }
   .right-selection-group {
     float: right;
+    text-align: right;
   }
 }
 
@@ -45,7 +44,7 @@
 }
 
 .incorrect-key-x {
-  color: #e81f11;
+  @extend .red-text, .accent-4;
   font-size: 50px;
   height: 50px;
   font-weight: 700;
@@ -55,6 +54,7 @@
 
 .result-headline {
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
+  font-size: 24px;
+  max-width: 1000px;
+  margin: 0 auto 24px;
 }

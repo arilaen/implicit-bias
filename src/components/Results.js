@@ -27,10 +27,10 @@ const getResultStatement = (bias, test) => {
   switch(bias) {
     case BIAS.NONE:
       return (
-        <h4 className="result-headline">
+        <p className="result-headline">
           Your responses suggest no automatic association between <span className="target">{targetType}
           </span> and <span className="category">{categoryType}</span>.
-        </h4>
+        </p>
       )
     case BIAS.COMPATIBLE:
       return (
