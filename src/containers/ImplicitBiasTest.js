@@ -15,7 +15,6 @@ const ImplicitBiasTest = ({ currentTest, dispatchStartTest }) => {
   const test = tests.find((test) => test.id === testId);
   if (!test) return (<TestNotFound />)
   if (!!currentTest) {
-    console.log('current test', currentTest)
     return !currentTest.finished ?
       <Block test={test} currentTest={currentTest} /> :
       <Results test={test} currentTest={currentTest} />

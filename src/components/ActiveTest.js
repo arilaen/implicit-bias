@@ -7,6 +7,7 @@ import IMPLICIT_BIAS_TEST_BLOCKS from '../constants/ImplicitBiasTestBlocks'
 import INPUT_KEYS, { getEventKeyForInputKey } from '../constants/InputKeys'
 import targetAndCategoryValues from '../data/targetAndCategoryValues'
 import { toTitleCase } from '../formatters'
+import TARGET_CATEGORY_DISPLAY_TYPE from '../constants/TargetCategoryDisplayType'
 
 const TARGET_OR_CATEGORY = { // need to be lowercase - will be used as classes
   TARGET: 'target',
@@ -37,7 +38,7 @@ class ActiveTest extends React.Component {
     document.removeEventListener('keyup', this.handleKeyPress)
     if (this.props.currentBlock.critical) {
       const totalTime = Date.now() - this.state.timeStarted
-      this.props.currentBlock.compatible ?
+      this.props.currentBlock.displayType === TARGET_CATEGORY_DISPLAY_TYPE.COMPATIBLE_ALL ?
         this.props.dispatchSetCompatibleMilliseconds(totalTime) :
         this.props.dispatchSetIncompatibleMilliseconds(totalTime)
     }
@@ -113,7 +114,7 @@ class ActiveTest extends React.Component {
     return (
       <div>
         <div className={`displayed-test-value ${targetOrCategory}`}>{toTitleCase(valueToDisplay)}</div>
-        {incorrectKeyPressed && <div className="incorrect-key-x">X</div>}
+        <div className="incorrect-key-x">{incorrectKeyPressed && 'X'}</div>
         <p>If you make a mistake, a red <span className="bold-red">X</span> will appear. Press the other key to continue.</p>
       </div>
     )

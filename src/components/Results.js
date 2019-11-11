@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -10,7 +10,7 @@ const BIAS_THRESHOLD = 1000
 
 const getBias = (incompatibleMilliseconds, compatibleMilliseconds) => {
   const incompatibleCompatibleDiff = incompatibleMilliseconds - compatibleMilliseconds
-  if (Math.abs(incompatibleCompatibleDiff <= BIAS_THRESHOLD)) {
+  if (Math.abs(incompatibleCompatibleDiff) <= BIAS_THRESHOLD) {
     return BIAS.NONE
   }
   return incompatibleCompatibleDiff > 0 ?
@@ -26,35 +26,57 @@ const getResultStatement = (bias, test) => {
   const secondCategory = categories[1]
   switch(bias) {
     case BIAS.NONE:
-      return `Your responses suggest no automatic association between ${targetType} and ${categoryType}.`
+      return (
+        <h4 className="result-headline">
+          Your responses suggest no automatic association between <span className="target">{targetType}
+          </span> and <span className="category">{categoryType}</span>.
+        </h4>
+      )
     case BIAS.COMPATIBLE:
-      return `Your responses suggest an automatic association for ${toTitleCase(targetsInCompatibleOrder[0])} with ${toTitleCase(firstCategory)} and ${toTitleCase(targetsInCompatibleOrder[0])} with ${toTitleCase(secondCategory)}.`
+      return (
+        <h4 className="result-headline">
+          Your responses suggest an automatic association for <span className="target">
+          {toTitleCase(targetsInCompatibleOrder[0])}
+          </span> with <span className="category">{toTitleCase(firstCategory)}
+          </span> and <span className="target">{toTitleCase(targetsInCompatibleOrder[1])}
+          </span> with <span className="category">{toTitleCase(secondCategory)}
+          </span>.
+        </h4>
+      )
     case BIAS.INCOMPATIBLE:
       const targetsInIncompatibleOrder = targetsInCompatibleOrder.slice().reverse()
-      return `Your responses suggest an automatic association for ${toTitleCase(targetsInIncompatibleOrder[0])} with ${toTitleCase(firstCategory)} and ${toTitleCase(targetsInIncompatibleOrder[1])} with ${toTitleCase(secondCategory)}.`
+      return (
+        <h4 className="result-headline">
+          Your responses suggest an automatic association for <span className="target">
+          {toTitleCase(targetsInIncompatibleOrder[0])}
+          </span> with <span className="category">{toTitleCase(firstCategory)}
+          </span> and <span className="target">{toTitleCase(targetsInIncompatibleOrder[1])}
+          </span> with <span className="category">{toTitleCase(secondCategory)}
+          </span>.
+        </h4>
+      )
     default:
       return 'We were unable to calculate your results due to an unexpected error.'
   }
 }
 
-const Results = ({ test, incompatibleMilliseconds, compatibleMilliseconds}) => {
-  const bias = getBias(incompatibleMilliseconds, compatibleMilliseconds)
-  const resultStatement = getResultStatement(bias, test)
-  return (
-    <div>
-      <h2>Results</h2>
-      <h3>{resultStatement}</h3>
-      <p>More info about results to come...</p>
-      <Link to="/home">Back to home</Link>
-    </div>
-  )
-}
-
-const mapStateToProps = ({ incompatibleMilliseconds, compatibleMilliseconds }) => {
-  console.log('results state', incompatibleMilliseconds, compatibleMilliseconds)
-  return {
-    incompatibleMilliseconds,
-    compatibleMilliseconds
+class Results extends Component {
+  componentWillUnmount() {
+    this.props.dispatchResetTest()
+  }
+  render() {
+    const { test, currentTest } = this.props
+    const { incompatibleMilliseconds, compatibleMilliseconds } = currentTest
+    const bias = getBias(incompatibleMilliseconds, compatibleMilliseconds)
+    const resultStatement = getResultStatement(bias, test)
+    return (
+      <div>
+        <h2>Results</h2>
+        {resultStatement}
+        <p>More info about results to come...</p>
+        <Link to="/home">Back to home</Link>
+      </div>
+    )
   }
 }
 
@@ -63,7 +85,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const VisibleResults = connect(
-  mapStateToProps,
+  () => ({}),
   mapDispatchToProps 
 )(Results)
 
