@@ -1,0 +1,7 @@
+const BIAS = {
+  NONE: 'NO_BIAS',
+  COMPATIBLE: 'COMPATIBLE',
+  INCOMPATIBLE: 'INCOMPATIBLE'
+}
+
+export default BIAS

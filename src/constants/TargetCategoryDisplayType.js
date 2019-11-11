@@ -8,18 +8,17 @@ const TARGET_CATEGORY_DISPLAY_TYPE = {
 
 export default TARGET_CATEGORY_DISPLAY_TYPE
 
-export function getDisplayValuesForType(displayType, compatibleTargetsToCategories) {
+export function getDisplayValuesForType(displayType, compatible) {
   const result = {
     leftTarget: null, rightTarget: null, leftCategory: null, rightCategory: null
   }
-  const targetList = Object.keys(compatibleTargetsToCategories)
-  const reverseTargetList = targetList.reverse
-  const categoryList = Object.values(compatibleTargetsToCategories)
-
+  const targetList = Object.keys(compatible)
+  const reverseTargetList = targetList.slice().reverse()
+  const categoryList = Object.values(compatible)
   switch(displayType) {
     case TARGET_CATEGORY_DISPLAY_TYPE.CATEGORIES_ONLY:
       return Object.assign(result, {
-        leftCategory: categoryList[0], rightTarget: categoryList[1]
+        leftCategory: categoryList[0], rightCategory: categoryList[1]
       })
     case TARGET_CATEGORY_DISPLAY_TYPE.COMPATIBLE_ALL:
       return Object.assign(result, {

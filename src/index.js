@@ -3,10 +3,11 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
-import './index.css'
 import App from './App'
 import rootReducer from './reducers'
 import * as serviceWorker from './serviceWorker'
+import '../node_modules/materialize-css/sass/materialize.scss'
+import './scss/global.scss'
 
 const store = createStore(rootReducer)
 

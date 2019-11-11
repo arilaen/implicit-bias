@@ -4,11 +4,14 @@ const tests = [
   {
     id: 'power-happiness',
     name: 'Power happiness bias test',
-    description: 'Find bias between power and happiness/unhappiness levels.',
-    compatibleTargetsToCategories: {
+    description: 'Find bias between power and happiness level.',
+    targetType: 'power',
+    categoryType: 'happiness',
+    compatible: {
       'more_power': 'happy',
       'less_power': 'sad'
-    }
+    },
+    
   }
 ]
 

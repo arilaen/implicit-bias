@@ -1,15 +1,53 @@
+// TODO: Make materialize SCSS available to these selectors (so extend would work etc.)
+
 .target {
-  color: 'blue';
+  color: #1117df;
+  // @extend .blue, .accent-4;
+  font-weight: 600;
 }
 
 .category {
-  color: 'green';
+  color: #3faa31;
+  // @extend .green, .accent-4;
+  font-weight: 600;
+}
+
+.bold-red {
+  color: #e81f11;
+  font-weight: 700;
 }
 
 .or-separator {
-  color: 'black';
+  color: #1e2b1d;
 }
 
 .target-and-or-category {
-  font-size: 32px;
+  font-size: 28px;
+}
+
+.selection-groups {
+  display: relative;
+  width: 100%;
+  min-height: 150px;
+  .left-selection-group {
+    float: left;
+  }
+  .right-selection-group {
+    float: right;
+  }
+}
+
+.displayed-test-value {
+  margin: 0 auto;
+  font-size: 38px;
+  margin: 30px auto 50px;
+  text-align: center;
+}
+
+.incorrect-key-x {
+  color: #e81f11;
+  font-size: 50px;
+  font-weight: 700;
+  margin: 30px auto;
+  text-align: center;
 }

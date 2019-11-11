@@ -5,7 +5,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import './App.css';
 import Home from './containers/Home';
 import About from './containers/About';
 import ImplicitBiasTest from './containers/ImplicitBiasTest';
@@ -13,7 +12,7 @@ import ImplicitBiasTest from './containers/ImplicitBiasTest';
 export default function App() {
   return (
     <Router>
-      <div>
+      <div className="nav-and-content">
         <nav>
           <ul>
             <li>
@@ -25,7 +24,7 @@ export default function App() {
           </ul>
         </nav>
         <Switch>
-          <Route path={`/tests/:testId`}>
+          <Route path={`/test/:testId`}>
             <ImplicitBiasTest />
           </Route>
           <Route path="/about">

@@ -1,28 +1,39 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
-// import { connect } from 'react-redux'
-// import { increment, decrement, reset } from './actionCreators'
+import { startTest } from '../actions'
 import Block from '../components/Block'
 import Results from '../components/Results'
 import TestNotFound from '../components/TestNotFound'
 import TestStart from '../components/TestStart'
-import tests from '../tests';
+import tests from '../data/tests'
+import '../scss/implicit-bias-test.scss'
 
-// const changeableState = {
-//   compatibleTargetsToCategories: null,
-//   currentBlock: null,
-//   finished: false,
-//   incompatibleTargetsToCategoriesMilliseconds: null,
-//   compatibleTargetsToCategoriesMilliseconds: null
-// }
-
-export default function ImplicitBiasTest({ testId, currentState }) {
+const ImplicitBiasTest = ({ currentTest, dispatchStartTest }) => {
+  const { testId } = useParams();
   const test = tests.find((test) => test.id === testId);
   if (!test) return (<TestNotFound />)
-  if (!!currentState && !!currentState.currentBlock) return (<Block test={test} currentState={currentState} />)
-  if (!!currentState && !!currentState.finished) return (<Results test={test} currentState={currentState} />)
-  const startTest = () => {
-    // redux action to set currentState
+  if (!!currentTest) {
+    console.log('current test', currentTest)
+    return !currentTest.finished ?
+      <Block test={test} currentTest={currentTest} /> :
+      <Results test={test} currentTest={currentTest} />
   }
-  return (<TestStart test={test} startTest={startTest} />)
+  return (<TestStart test={test} onStartTestButtonPress={() => dispatchStartTest(test)} />)
 }
+
+const mapStateToProps = ({ currentTest }) => ({
+  currentTest
+})
+
+const mapDispatchToProps = dispatch => ({
+  dispatchStartTest: test => dispatch(startTest(test))
+})
+
+const VisibleImplicitBiasTest = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ImplicitBiasTest)
+
+export default VisibleImplicitBiasTest
