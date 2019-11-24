@@ -12,9 +12,13 @@ Changes such as updating number of rounds per test or test display types (i.e. `
 
 As of this writing, the implicit bias result logic we're using is fairly basic (not up to the level of precision that the official Harvard version uses). Logic updates/improvements are more than welcome!
 
+### Styling changes
+
+Styling updates are welcome as well! If you would like to make your changes in a theme, we encourage creating your own themed scss file(s). Any changes that improve functionality or accessibility are welcome in the main stylesheets/components as well!
+
 ### Making updates
 
-This is a small, informal project so there are no strict guidelines for commit messages etc. at this time. One recommended format would be to include the type of change you're making (data/logic) in your message, i.e. "logic: add mild/moderate/strong bias results."
+This is a small, informal project so there are no strict guidelines for commit messages etc. at this time. One recommended format would be to include the type of change you're making (data/logic/styles) in your message, i.e. "logic: add mild/moderate/strong bias results."
 
 Thanks again for your interest in improving this humble project! Feel free to open a ticket if you have any questions about contributing or requested features.
 
