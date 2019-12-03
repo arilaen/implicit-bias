@@ -58,3 +58,11 @@
   max-width: 1000px;
   margin: 0 auto 24px;
 }
+
+.row .borderme {
+        border: 5px solid grey;
+    /*width: 80%;*/
+    /*height: 50%;*/
+    min-width: 600px;
+    height: 600px;
+}
