@@ -15,10 +15,10 @@ const getInstructionForSide = (currentBlockIndex, target, category, isLeft) => {
     const value = onlyTarget ? target : category
     const styledValue = <span className={categoryOrTargetClass}>{value}</span>
     return currentBlockIndex < 2 ?
-      <p>Put a {side} finger on the <strong>{inputKey}</strong> key for items that belong to the category {styledValue}.</p> :
-      <p>Use the <strong>{inputKey}</strong> key for {styledValue}</p>
+        <p>Put a {side} finger on the <a class="btn disabled"><strong>{inputKey}</strong></a> key for items that belong to the category {styledValue}.</p> :
+        <p>Use the <a class="btn disabled"><strong>{inputKey}</strong> </a>key for {styledValue}</p>
   }
-  return <p>Use the <strong>{inputKey}</strong> key for <span className="target">{target}</span> and for <span className="category">{category}</span>.</p>
+  return <p>Use the<a class="btn disabled"> <strong>{inputKey}</strong> </a>key for <span className="target">{target}</span> and for <span className="category">{category}</span>.</p>
 }
 
 const getExtraInstruction = (currentBlockIndex, hasTargetAndCategory) => {
@@ -39,7 +39,12 @@ export default function Instructions({ currentBlockIndex, leftTarget, leftCatego
       { !!extraInstruction && extraInstruction}
       <p>If you make a mistake, a red <span className="bold-red">X</span> will appear. Press the other key to continue.</p>
       <p>Go as fast as you can while being accurate.</p>
-      <p>Press the <strong>{INPUT_KEYS.START_KEY}</strong> when you are ready to start.</p>
+                    <div class="divider"></div>
+                    <h4 class="header center red-text text-darken-4">Ready?</h4>
+                        <div class ="row center">
+                            <h5> <p>Press the <a class="btn disabled"> <strong>{INPUT_KEYS.START_KEY}</strong></a> when you are ready to start.</p></h5>
+
+                        </div>
     </div>
   )
 }

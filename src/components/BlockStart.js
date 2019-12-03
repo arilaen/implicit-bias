@@ -19,7 +19,8 @@ export default class BlockStart extends Component{
     const numBlocks = Object.keys(IMPLICIT_BIAS_TEST_BLOCKS).length
     return (
       <div className="block-pre-test">
-        <h2>Part {displayIndex} of {numBlocks}</h2>
+        <h3 class="header center red-text text-darken-4">Part {displayIndex} of {numBlocks}</h3>
+        <div class="center">
         <Instructions
           currentBlockIndex={currentBlockIndex}
           leftTarget={leftTarget}
@@ -27,6 +28,7 @@ export default class BlockStart extends Component{
           leftCategory={leftCategory}
           rightCategory={rightCategory}
         />
+      </div>
       </div>
     )
   }
