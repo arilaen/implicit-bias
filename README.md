@@ -15,7 +15,7 @@ The last command will open the app at localhost:3000, or another port if 3000 is
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![app homepage](./homepage_instructions.png)
+![app homepage](./homepage_screenshot.png)
 ![app instructions](./instructions_screenshot.png)
 ![IAT test](./test_screenshot.png)
 ![results](./results_screenshot.png)
