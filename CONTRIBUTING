@@ -1,0 +1,24 @@
+# Contributing to Implicit Bias
+
+Thanks for your interest in contributing!
+
+### Adding/modifying test data
+
+For new tests for your own projects, it is probably best to fork this repo and add test data to the `src/data` directory. New tests belong in `src/data/tests.js`, and target/category values belong in `src/data/targetAndCategoryValues.js`. If you would like to propose new tests to add to the base project you're welcome to :) PRs modifying existing test data may or may not be accepted (in case others are using certain data already) - I would recommend making new versions of tests or data (with a _v2+ suffix) for those cases. 
+
+Changes such as updating number of rounds per test or test display types (i.e. `src/constants/ImplicitBiasTestBlocks.js`) will likely not be accepted unless multiple users prefer different defaults, or are made as additional files (i.e. a new `ShortTestImplicitBiasTestBlocks.js`).
+
+### Updating implicit bias testing and/or result logic
+
+As of this writing, the implicit bias result logic we're using is fairly basic (not up to the level of precision that the official Harvard version uses). Logic updates/improvements are more than welcome!
+
+### Styling changes
+
+Styling updates are welcome as well! If you would like to make your changes in a theme, we encourage creating your own themed scss file(s). Any changes that improve functionality or accessibility are welcome in the main stylesheets/components as well!
+
+### Making updates
+
+This is a small, informal project so there are no strict guidelines for commit messages etc. at this time. One recommended format would be to include the type of change you're making (data/logic/styles) in your message, i.e. "logic: add mild/moderate/strong bias results."
+
+Thanks again for your interest in improving this humble project! Feel free to open a ticket if you have any questions about contributing or requested features.
+

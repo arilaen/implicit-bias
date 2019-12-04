@@ -1,3 +1,18 @@
+# Implicit Bias App
+
+This is a simplified recreation of the Harvard's [Project Implicit](https://implicit.harvard.edu/implicit/takeatest.html) tests, using React and Redux. Tested with Node v12.13.0.
+
+To install and run:
+
+```
+git clone git@github.com:arilaen/implicit-bias.git
+cd implicit-bias
+npm i
+npm start
+```
+
+The last command will open the app at localhost:3000, or another port if 3000 is already taken. You can also navigate to localhost:3000 as long as npm start is running.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ![app homepage](./homepage_instructions.png)
